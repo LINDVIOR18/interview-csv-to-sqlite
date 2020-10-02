@@ -16,6 +16,8 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
+import static my.pacakge.service.DataToDataBase.dataInsertToDB;
+
 
 @Slf4j
 public class ReaderCSV {
@@ -42,7 +44,7 @@ public class ReaderCSV {
                 writer.writeNext(nextRecord);
                 recordsFailed++;
             } else {
-                DataBaseConnection.dataInsertToDB(preparedStatement, nextRecord);
+                dataInsertToDB(preparedStatement, nextRecord);
                 recordsSuccessful++;
             }
             if (batchSize++ > 100) {
