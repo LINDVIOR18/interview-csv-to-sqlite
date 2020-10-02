@@ -9,6 +9,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import static my.pacakge.service.Constants.JDBC_URL;
+import static my.pacakge.service.Constants.SQL_INSERT;
+
 @Slf4j
 public class DataBaseConnection {
 
@@ -16,9 +19,8 @@ public class DataBaseConnection {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
-            String url = "jdbc:sqlite:src/main/resources/database/interviewDB.db";
-            connection = DriverManager.getConnection(url);
-            preparedStatement = connection.prepareStatement(Constants.SQL_INSERT);
+            connection = DriverManager.getConnection(JDBC_URL);
+            preparedStatement = connection.prepareStatement(SQL_INSERT);
 
             log.info("Database connection success");
 
